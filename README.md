@@ -23,3 +23,8 @@ Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app w
     measurementId: "XXXXXXXXXXXXXXXXXXXXXXX"
   },
  ```
+
+ # TODOs
+ 1. Refactor the code (Remove duplicate code)
+ 2. Add Firebase store
+ 3. Add home page and fix messaging to all Pages.
