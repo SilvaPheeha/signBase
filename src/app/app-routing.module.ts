@@ -3,9 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { NotFoundComponent } from './not-found/not-found.component';
 
 const routes: Routes = [
-  { path: '',   redirectTo: '/signin', pathMatch: 'full' },
-  { path: 'signin', loadChildren: () => import('./sign-in/sign-in.module').then(m => m.SignInModule) },
-  { path: 'signup', loadChildren: () => import('./sign-up/sign-up.module').then(m => m.SignUpModule) },
+  { path: '', loadChildren: () => import('./authentication/authentication-shell/authentication-shell.module').then(m => m.AuthenticationShellModule) },
   {path:'**', component: NotFoundComponent}
 ];
 
