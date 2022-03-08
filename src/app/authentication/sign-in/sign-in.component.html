@@ -3,6 +3,11 @@
     <p class="text-sm">{{getError.message}}</p>
 </div>
 
+<div *ngIf="(getCredentials$ | async) as getCredentials" class="bg-green-100 border-t border-b border-green-500 text-green-700 px-4 py-3" role="alert">
+    <p class="font-bold">Sign In Succesful </p>
+    <p class="text-sm">Welcome to SignBase</p>
+</div>
+
 <div class="h-full w-full py-16 px-4">
     <div class="flex flex-col items-center justify-center ">
         <div [formGroup]="signInForm"  class="bg-white shadow rounded bg-gradient-to-br from-white to-gray-100 lg:w-1/3 md:w-1/2 w-full p-10 mt-16">

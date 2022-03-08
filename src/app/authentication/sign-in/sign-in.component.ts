@@ -14,6 +14,7 @@ import { AuthenticationState } from '../authentication-state/state.reducer';
   styleUrls: ['./sign-in.component.scss']
 })
 export class SignInComponent implements OnInit {
+  private emailPattern = "^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$";
   public signInForm!: FormGroup;
   public isPasswordType = true;
   public displayMessage: any = {};
@@ -24,7 +25,7 @@ export class SignInComponent implements OnInit {
   ngOnInit(): void {
     this.getCredentials$ = this.store.select(getSignInCredentials);
     this.getError$ = this.store.select(getError).pipe(map(err => err && err.page === 'SignIn' ? err : null ));
-    this.getCredentials$ .subscribe(c => console.log(c));
+    this.getCredentials$ .subscribe(c => c ? this.signInForm.reset(): null);
     this.signInForm = this.form();
     this.signInForm.valueChanges.pipe(delay(1000)).subscribe(
       () => this.displayMessage = this.sharedService.processMessages(this.signInForm)
@@ -33,8 +34,8 @@ export class SignInComponent implements OnInit {
 
   form(): FormGroup{
     return this.formBuider.group({
-      email: ['', Validators.required],
-      password: ['', Validators.required],
+      email: ['', [Validators.required, Validators.pattern(this.emailPattern)]],
+      password: ['', [Validators.required, Validators.minLength(6), Validators.maxLength(12)]],
     })
   }
 
