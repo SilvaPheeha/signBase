@@ -11,3 +11,15 @@ Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app w
 2. Firbase/ AngularFire
 3. Tailwind
 
+# Dont forget to add the your firbaseConfig:
+ ```
+   firebaseConfig: {
+    apiKey: "XXXXXXXXXXXXXXXXXXXXXXX",
+    authDomain: "XXXXXXXXXXXXXXXXXXXXXXX",
+    projectId: "XXXXXXXXXXXXXXXXXXXXXXX",
+    storageBucket: "XXXXXXXXXXXXXXXXXXXXXXX",
+    messagingSenderId: "XXXXXXXXXXXXXXXXXXXXXXX",
+    appId: "XXXXXXXXXXXXXXXXXXXXXXX",
+    measurementId: "XXXXXXXXXXXXXXXXXXXXXXX"
+  },
+ ```
