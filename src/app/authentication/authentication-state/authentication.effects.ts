@@ -16,7 +16,17 @@ export class AuthenticationEffects {
         mergeMap((action) => this.authenticationService.signIn(action.email, action.password)
         .pipe(
             map(res => authApiActions.signInSuccess({ credetials: res})),
-            catchError((error) => of(authApiActions.signInFailure({error})))
+            catchError((error) => of(authApiActions.signInFailure({error: this.authenticationService.errorHandler(error, 'SignIn')})))
+          ))
+        )
+      )
+
+      forgotPassword$ = createEffect(() => this.actions$.pipe(
+        ofType(authAppActions.forgotPassword),
+        mergeMap((action) => this.authenticationService.forgotPassword(action.email)
+        .pipe(
+            map(res => authApiActions.forgotPasswordSuccess()),
+            catchError((error) => of(authApiActions.forgotPasswordFailture({error: this.authenticationService.errorHandler(error, 'ForgotPassword')})))
           ))
         )
       )
@@ -26,7 +36,7 @@ export class AuthenticationEffects {
         mergeMap((action) => this.authenticationService.signUp(action.email, action.password)
         .pipe(
             map(res => authApiActions.signUpSuccess({ credetials: res})),
-            catchError((error) => of(authApiActions.signUpFailure({error})))
+            catchError((error) => of(authApiActions.signUpFailure({error: this.authenticationService.errorHandler(error, 'SignUp')})))
           ))
         )
       )

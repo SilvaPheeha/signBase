@@ -10,10 +10,18 @@ export const signInFailure = createAction(
     props<{error: any}>()
 );
 
-
 export const signUpSuccess = createAction(
     '[AUTH API] Sign In Success',
     props<{credetials: any}>()
+);
+
+export const forgotPasswordSuccess = createAction(
+    '[AUTH API] Forgot Password Success',
+);
+
+export const forgotPasswordFailture = createAction(
+    '[AUTH API] Forgot Password Failure',
+    props<{error: any}>()
 );
 
 export const signUpFailure = createAction(

@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { FormGroup } from '@angular/forms';
 import {validationMessages} from './validation-messages'
 
@@ -7,7 +8,13 @@ import {validationMessages} from './validation-messages'
 })
 export class ShareService {
 
-  constructor() { }
+  constructor(private firebaseStore: AngularFirestore) { }
+
+  storeCredetials(){
+  }
+
+  getCredetials(){
+  }
 
   processMessages(container: FormGroup): { [key: string]: string } {
     const messages = {} as any;

@@ -16,7 +16,7 @@ import { AuthenticationEffects } from './authentication/authentication-state/aut
 @NgModule({
   declarations: [
     AppComponent,
-    NotFoundComponent
+    NotFoundComponent,
   ],
   imports: [
     BrowserModule,

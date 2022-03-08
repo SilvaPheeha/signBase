@@ -6,13 +6,15 @@ import { AuthenticationShellComponent } from './authentication-shell.component';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { SignInComponent } from '../sign-in/sign-in.component';
 import { SignUpComponent } from '../sign-up/sign-up.component';
+import { ForgotPasswordComponent } from '../forgot-password/forgot-password.component';
 
 
 @NgModule({
   declarations: [
     AuthenticationShellComponent,
     SignInComponent,
-    SignUpComponent
+    SignUpComponent,
+    ForgotPasswordComponent,
   ],
   imports: [
     CommonModule,

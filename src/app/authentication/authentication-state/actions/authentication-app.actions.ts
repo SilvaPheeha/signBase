@@ -10,3 +10,13 @@ export const signUp = createAction(
     '[AUTH APP] Sign Up User',
     props<{email: string, password: string}>()
 );
+
+export const forgotPassword = createAction(
+    '[AUTH APP] User Forgot Password',
+    props<{email: string}>()
+);
+
+
+export const clearErrors = createAction(
+    '[AUTH APP] Clear Erros',
+);

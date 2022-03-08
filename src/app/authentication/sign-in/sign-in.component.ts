@@ -2,9 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
-import { delay } from 'rxjs/operators';
+import { delay, map } from 'rxjs/operators';
 import { ShareService } from 'src/app/shared/share.service';
-import { getCredentials } from '../authentication-state';
+import { getError, getSignInCredentials } from '../authentication-state';
 import { authAppActions } from '../authentication-state/actions';
 import { AuthenticationState } from '../authentication-state/state.reducer';
 
@@ -17,11 +17,13 @@ export class SignInComponent implements OnInit {
   public signInForm!: FormGroup;
   public isPasswordType = true;
   public displayMessage: any = {};
-  public getCredentials$!: Observable<any>;;
+  public getCredentials$!: Observable<any>;
+  public getError$!: Observable<any>;
   constructor(private formBuider: FormBuilder, private store: Store<AuthenticationState>, private sharedService: ShareService) { }
 
   ngOnInit(): void {
-    this.getCredentials$ = this.store.select(getCredentials);
+    this.getCredentials$ = this.store.select(getSignInCredentials);
+    this.getError$ = this.store.select(getError).pipe(map(err => err && err.page === 'SignIn' ? err : null ));
     this.getCredentials$ .subscribe(c => console.log(c));
     this.signInForm = this.form();
     this.signInForm.valueChanges.pipe(delay(1000)).subscribe(
